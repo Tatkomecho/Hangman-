@@ -1,29 +1,49 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include<iostream>
+#include<cstring>
+#include<ncurses>
+using namespace std;
+int check(char b,char c[])
+{
+    bool m=false;
+    for (int i=0 ; i<8 ; i++)
+        {
+            m=m||(b==c[i]);
+            if(b==c[i]) cout<<b;
+            else cout<<"@";
+    }
+    cout<<endl;
+    return m;
+}
+char vhod()
+{
+char a[1];
+cout<<"Enter a letter"<<endl;
+cin>>a[0];
+char r=a[0];
+return r;
+}
+int main()
+{
+char duma[]="trystika";
+int n=5,p=0;
+cout<<"@@@@@@@@"<<endl;
+while (n>0)
+{
+    cout<<"You have "<<n<<" tries"<<endl;
+    char b=vhod();
+    char c[7];
+    if(check(b,duma)==0) {if(n!=1)cout<<"Try again"<<endl<<endl; n=n-1;}
+    else
+    {
+        bool m=false;
+       for (int i=0 ; i<7 ; i++) m=m||(b==c[i]);
+       if (m==0) {c[p]=b ; p++;}
+       cout<<endl;
+       refresh();
+    }
+    if (p==7) {cout<<"You guessed right , the word is trystika"<<endl; return 0;}
+}
+cout<<"Good luck next time :( ";
+return 0;
+}
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
